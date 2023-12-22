@@ -11,7 +11,7 @@ Different techniques exist for loading layers, which represent geospatial data, 
 7. [KML](#kml)
 8. [DXF](#dxf)
 9. [Geoparquet](#parquet)
-10. [ENC (S-57)](#encs57)
+10. [WMS (Web Map Service)](#wms)
 
 
 ## Shapefile (.shp) <a name="shapefile"></a>
@@ -163,28 +163,39 @@ gdf_geoparquet = gpd.read_parquet(parquet_path)
 print(gdf_geoparquet.head())
 ```
 
-## ENC S-57 (.000) <a name="encs57"></a>
+## WMS (Web Map Service) <a name="wms"></a>
 
 ```python
+from owslib.wfs import WebFeatureService
+import json
 import geopandas as gpd
-from osgeo import ogr
 
-# Path al archivo S-57 (.000)
-s57_path = 'path/to/file.000'
+# WFS (Web Feature Service) URL
+wfs_url = 'https://your-web-service-url/geoserver/ows?'
+version = '1.1.0'
 
-# Crear un objeto ogr con el driver de S-57
-driver = ogr.GetDriverByName('S57')
-dataset = driver.Open(s57_path, 0)
+# Create a WFS object
+wfs = WebFeatureService(url=wfs_url, version=version)
 
-# Obtener la capa de objetos
-layer = dataset.GetLayerByIndex(0)
+# Get feature data from WFS using specified parameters
+typename = 'your-layer-name'
+srsname = 'EPSG:4326'
+output_format = 'application/json'
+response = wfs.getfeature(typename=typename, srsname=srsname, outputFormat=output_format)
 
-# Crear un GeoDataFrame desde la capa de objetos
-gdf_s57 = gpd.read_file(layer)
+# Read the response data
+data = response.read()
 
-# Cerrar el dataset
-dataset = None
+# Load data into a dictionary
+data_dict = json.loads(data)
 
-# Mostrar el GeoDataFrame
-print(gdf_s57.head())
+# Save data to a temporary GeoJSON file
+with open('temp.geojson', 'w') as geojson_file:
+    json.dump(data_dict, geojson_file)
+
+# Read data from the GeoJSON file into a GeoDataFrame
+gdf = gpd.read_file('temp.geojson')
+
+# Set a Coordinate Reference System (CRS) for the GeoDataFrame
+gdf = gdf.set_crs(epsg=4326, allow_override=True)
 ```
