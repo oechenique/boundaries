@@ -16,6 +16,8 @@ Different techniques exist for loading layers, which represent geospatial data, 
 
 ## Shapefile (.shp) <a name="shapefile"></a>
 
+In the accompanying notebook, you can find the Python implementation of the process. Check out the [shapefile notebook](https://github.com/tu-usuario/tu-repositorio/blob/main/tu-carpeta/tu-notebook.ipynb) for a detailed example.
+
 ```python
 import geopandas as gpd
 
