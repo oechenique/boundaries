@@ -32,6 +32,8 @@ print(gdf_shapefile.head())
 ```
 ## GeoJSON (.geojson) <a name="geojson"></a>
 
+In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/geojson.ipynb" target="_blank">geojson notebook</a> for a detailed example.
+
 ```python
 import geopandas as gpd
 
