@@ -199,5 +199,5 @@ cx.add_basemap(ax, source=cx.providers.OpenStreetMap.Mapnik)
 ax.set_title('JAPAN Prefectures')
 plt.show()
 ```
-![img_jp_md](data/jp_kml/output/japan_md.png)
+![img_jp_md](https://github.com/oechenique/boundaries/blob/main/Notebook/data/jp_kml/output/japan_md.png)
 
