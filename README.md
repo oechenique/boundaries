@@ -124,7 +124,7 @@ print(gdf_gml.head())
 
 In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/kml.ipynb" target="_blank">kml notebook</a> for a detailed example. 
 
-Note: If Notebook is broken you can see the same code here: <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/data/jp_kml/kml.md" target="_blank">kml md</a>.
+Note: If Notebook is broken you can see the same code here: <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/kml.md" target="_blank">kml md</a>.
 
 ```python
 import geopandas as gpd
