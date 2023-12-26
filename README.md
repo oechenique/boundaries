@@ -173,6 +173,8 @@ print(gdf_geoparquet.head())
 
 ## WMS (Web Map Service) <a name="wms"></a>
 
+In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/wms.ipynb" target="_blank">wfs notebook</a> for a detailed example.
+
 ```python
 from owslib.wfs import WebFeatureService
 import json
