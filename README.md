@@ -12,6 +12,7 @@ Different techniques exist for loading layers, which represent geospatial data, 
 8. [DXF](#dxf)
 9. [Geoparquet](#parquet)
 10. [WFS (Web Feature Service)](#wfs)
+11. [GIS Web Service](#gws)
 
 
 ## Shapefile (.shp) <a name="shapefile"></a>
