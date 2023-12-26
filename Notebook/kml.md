@@ -239,5 +239,5 @@ Image(filename=ruta_archivo_png)
 
 
 
-![img_jp_md](https://github.com/oechenique/boundaries/blob/main/Notebook/data/japan_kml_view.png)
+![img_jp_md](https://github.com/oechenique/boundaries/blob/main/Notebook/data/kml/japan_kml_view.png)
 
