@@ -4,15 +4,11 @@ Different techniques exist for loading layers, which represent geospatial data, 
 ## TABLE OF CONTENTS
 1. [Shapefile](#shapefile)
 2. [GeoJSON](#geojson)
-3. [GeoPackage (GPKG)](#gpkg)
-4. [KMZ (Compressed KML)](#kmz)
-5. [TopoJSON](#topojson)
-6. [GML](#gml)
-7. [KML](#kml)
-8. [DXF](#dxf)
-9. [Geoparquet](#parquet)
-10. [WFS (Web Feature Service)](#wfs)
-11. [GIS Web Service](#gws)
+3. [KML](#kml)
+4. [WFS (Web Feature Service)](#wfs)
+5. [GIS Web Service](#gws)
+6. [H3 (UBER H3 Hexagon)](#h3)
+7. [Other File Formats](#other)
 
 
 ## Shapefile (.shp) <a name="shapefile"></a>
@@ -31,6 +27,7 @@ gdf_shapefile = gpd.read_file(shp_path)
 # Display the GeoDataFrame
 print(gdf_shapefile.head())
 ```
+
 ## GeoJSON (.geojson) <a name="geojson"></a>
 
 In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/geojson.ipynb" target="_blank">geojson notebook</a> for a detailed example.
@@ -46,78 +43,6 @@ gdf_geojson = gpd.read_file(geojson_path)
 
 # Display the GeoDataFrame
 print(gdf_geojson.head())
-```
-
-## GPKG (.gpkg) <a name="gpkg"></a>
-
-```python
-import geopandas as gpd
-
-# Path to the GPKG file
-gpkg_path = 'path/to/file.gpkg'
-
-# Load the GPKG into a GeoDataFrame
-gdf_gpkg = gpd.read_file(gpkg_path)
-
-# Display the GeoDataFrame
-print(gdf_gpkg.head())
-```
-
-## KMZ (Compressed KML) <a name="kmz"></a>
-
-```python
-import geopandas as gpd
-import shutil
-from zipfile import ZipFile
-
-# Path to the KMZ file
-kmz_path = 'path/to/file.kmz'
-kml_path = 'destination/path/file.kml'
-
-# Extract the KML from the KMZ file
-with ZipFile(kmz_path, 'r') as kmz:
-    kmz.extractall('destination/path/')
-
-# Load the KML into a GeoDataFrame
-gdf_kmz = gpd.read_file(kml_path)
-
-# Display the GeoDataFrame
-print(gdf_kmz.head())
-```
-
-## TopoJSON (.topojson) <a name="topojson"></a>
-
-```python
-import geopandas as gpd
-import json
-from topojson import topojson
-
-# Path to the TopoJSON file
-topojson_path = 'path/to/file.topojson'
-
-# Load the TopoJSON and convert it to GeoDataFrame
-with open(topojson_path, 'r') as f:
-    topojson_data = json.load(f)
-
-gdf_topojson = gpd.GeoDataFrame.from_features(topojson(topojson_data))
-
-# Display the GeoDataFrame
-print(gdf_topojson.head())
-```
-
-## GML (.gml) <a name="gml"></a>
-
-```python
-import geopandas as gpd
-
-# Path to the GML file
-gml_path = 'path/to/file.gml'
-
-# Load the GML into a GeoDataFrame
-gdf_gml = gpd.read_file(gml_path)
-
-# Display the GeoDataFrame
-print(gdf_gml.head())
 ```
 
 ## KML (.kml) <a name="kml"></a>
@@ -137,39 +62,6 @@ gdf_kml = gpd.read_file(kml_path)
 
 # Display the GeoDataFrame
 print(gdf_kml.head())
-```
-
-## DXF (.dxf)) <a name="dxf"></a>
-For DXF files, you may use the ezdxf library. You can install it using pip install ezdxf
-```python
-import geopandas as gpd
-import ezdxf
-
-# Path to the DXF file
-dxf_path = 'path/to/file.dxf'
-
-# Load the DXF into a GeoDataFrame
-doc = ezdxf.readfile(dxf_path)
-msp = doc.modelspace()
-gdf_dxf = gpd.GeoDataFrame(geometry=[entity.geometry for entity in msp.query('LINE')])
-
-# Display the GeoDataFrame
-print(gdf_dxf.head())
-```
-
-## Geoparquet (.parquet) <a name="parquet"></a>
-
-```python
-import geopandas as gpd
-
-# Path to the Geoparquet file
-parquet_path = 'path/to/file.parquet'
-
-# Load the Geoparquet into a GeoDataFrame
-gdf_geoparquet = gpd.read_parquet(parquet_path)
-
-# Display the GeoDataFrame
-print(gdf_geoparquet.head())
 ```
 
 ## Web Feature Server (WFS) <a name="wfs"></a>
@@ -210,3 +102,64 @@ gdf = gpd.read_file('temp.geojson')
 # Set a Coordinate Reference System (CRS) for the GeoDataFrame
 gdf = gdf.set_crs(epsg=4326, allow_override=True)
 ```
+
+## GIS Web Service <a name="gws"></a>
+
+In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/web_service.ipynb" target="_blank">gis web services notebook</a> for a detailed example.
+
+```python
+import osmnx as ox
+import geopandas as gpd
+
+# Specify the name of the city or area of interest
+city = "Name of the City or Area of Interest"
+
+# Download OSM data using Overpass API
+tags = {"amenity": "bar"}
+gdf = ox.geometries_from_place(city, tags)
+
+# Filter and create a GeoPandas DataFrame with relevant data
+gdf = gdf[gdf['amenity'] == 'bar']
+
+gdf = gdf.reset_index()
+
+# Filter only Point geometries
+gdf = gdf[gdf['geometry'].geom_type == 'Point']
+
+# Display the resulting DataFrame
+print(gdf)
+```
+
+## H3 (UBER H3 Hexagon) <a name="h3"></a>
+
+In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/h3.ipynb" target="_blank">h3 notebook</a> for a detailed example.
+
+```python
+import h3
+import geopandas as gpd
+from shapely.geometry import Polygon
+
+# Specify the resolution for H3 hexagons
+h3_resolution = 9
+
+# Create a GeoDataFrame to hold the H3 data
+gdf_h3 = gpd.GeoDataFrame()
+
+# Define the bounding box of the area of interest
+bbox = Polygon([(min_longitude, min_latitude), (min_longitude, max_latitude),
+                (max_longitude, max_latitude), (max_longitude, min_latitude)])
+
+# Get the H3 hexagons covering the bounding box
+hexagons = list(h3.polyfill(bbox.exterior.coords, res=h3_resolution))
+
+# Create a GeoDataFrame with the hexagons
+gdf_h3['geometry'] = gpd.GeoSeries([Polygon(h3.h3_to_geo_boundary(hexagon)) for hexagon in hexagons])
+gdf_h3['hex_id'] = hexagons
+
+# Display the resulting GeoDataFrame
+print(gdf_h3)
+```
+
+## Other File Formats <a name="other"></a>
+
+In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/others.md" target="_blank">others md</a> for a detailed example.
