@@ -1,5 +1,6 @@
 # Uploading Geospatial Files with Python Commands: A Step-by-Step Guide
-Different techniques exist for loading layers, which represent geospatial data, into GeoDataFrames.
+
+Different techniques for loading layers, which represent geospatial data, into GeoDataFrames. Here some related <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/libraries.md" target="_blank">libraries</a>.
 
 ## TABLE OF CONTENTS
 1. [Shapefile](#shapefile)
