@@ -11,7 +11,7 @@ Different techniques exist for loading layers, which represent geospatial data, 
 7. [KML](#kml)
 8. [DXF](#dxf)
 9. [Geoparquet](#parquet)
-10. [WMS (Web Map Service)](#wms)
+10. [WFS (Web Feature Service)](#wfs)
 
 
 ## Shapefile (.shp) <a name="shapefile"></a>
@@ -171,7 +171,7 @@ gdf_geoparquet = gpd.read_parquet(parquet_path)
 print(gdf_geoparquet.head())
 ```
 
-## WMS (Web Map Service) <a name="wms"></a>
+## Web Feature Server (WFS) <a name="wfs"></a>
 
 In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/wms.ipynb" target="_blank">wfs notebook</a> for a detailed example.
 
