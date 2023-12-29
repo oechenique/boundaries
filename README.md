@@ -166,8 +166,20 @@ print(gdf_h3)
 Explore the [3D visualization notebook](https://github.com/oechenique/boundaries/blob/main/Notebook/3d_visualization.ipynb) to learn how to visualize geospatial data with a focus on the Z-axis. This notebook demonstrates techniques for creating stunning 3D visualizations using Python.
 
 ```python
-# Your Python code for 3D visualization goes here
-# ...
+# DataFrame
+df = pd.read_csv('hex-data.csv')
+map_1.add_data(data=df, name='data_1')
+
+# CSV
+with open('csv-data.csv', 'r') as f:
+    csvData = f.read()
+map_1.add_data(data=csvData, name='data_2')
+
+# GeoJSON as string
+with open('sf_zip_geo.json', 'r') as f:
+    geojson = f.read()
+
+map_1.add_data(data=geojson, name='geojson')
 ```
 
 ## Handling Other File Formats <a name="other"></a>
