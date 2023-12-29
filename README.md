@@ -1,6 +1,6 @@
-# Uploading Geospatial Files with Python Commands: A Step-by-Step Guide
+# Managing Geospatial Data with Python: A Guide to Loading and Manipulating GeoDataFrames
 
-Different techniques for loading layers, which represent geospatial data, into GeoDataFrames. Here some related <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/libraries.md" target="_blank">libraries</a>.
+Explore different techniques for handling geospatial data using Python and GeoPandas. Additionally, check out some related [libraries](https://github.com/oechenique/boundaries/blob/main/Notebook/libraries.md).
 
 ## TABLE OF CONTENTS
 1. [Shapefile](#shapefile)
@@ -11,10 +11,9 @@ Different techniques for loading layers, which represent geospatial data, into G
 6. [H3 (UBER H3 Hexagon)](#h3)
 7. [Other File Formats](#other)
 
+## Loading Shapefiles (.shp) <a name="shapefile"></a>
 
-## Shapefile (.shp) <a name="shapefile"></a>
-
-In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/shapefile.ipynb" target="_blank">shapefile notebook</a> for a detailed example.
+Refer to the [shapefile notebook](https://github.com/oechenique/boundaries/blob/main/Notebook/shapefile.ipynb) for detailed examples and Python code.
 
 ```python
 import geopandas as gpd
@@ -29,9 +28,9 @@ gdf_shapefile = gpd.read_file(shp_path)
 print(gdf_shapefile.head())
 ```
 
-## GeoJSON (.geojson) <a name="geojson"></a>
+## Loading GeoJSON (.geojson) <a name="geojson"></a>
 
-In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/geojson.ipynb" target="_blank">geojson notebook</a> for a detailed example.
+Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/geojson.ipynb" target="_blank">geojson notebook</a> for detailed examples and Python code.
 
 ```python
 import geopandas as gpd
@@ -46,11 +45,11 @@ gdf_geojson = gpd.read_file(geojson_path)
 print(gdf_geojson.head())
 ```
 
-## KML (.kml) <a name="kml"></a>
+## Loading KML (.kml) <a name="kml"></a>
 
-In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/kml.zip" target="_blank">kml notebook</a> for a detailed example. 
+Explore the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/kml.zip" target="_blank">kml notebook</a> for a detailed KML loading example.
 
-Note: If you can see the notebook, same code here: <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/kml.md" target="_blank">kml md</a>.
+Note: If you can display the notebook, same code here: <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/kml.md" target="_blank">kml md</a>.
 
 ```python
 import geopandas as gpd
@@ -65,9 +64,9 @@ gdf_kml = gpd.read_file(kml_path)
 print(gdf_kml.head())
 ```
 
-## Web Feature Server (WFS) <a name="wfs"></a>
+## Accessing Web Feature Services (WFS) <a name="wfs"></a>
 
-In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/wms.ipynb" target="_blank">wfs notebook</a> for a detailed example.
+Refer to the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/wms.ipynb" target="_blank">wfs notebook</a> for detailed examples and Python code.
 
 ```python
 from owslib.wfs import WebFeatureService
@@ -104,9 +103,9 @@ gdf = gpd.read_file('temp.geojson')
 gdf = gdf.set_crs(epsg=4326, allow_override=True)
 ```
 
-## GIS Web Service <a name="gws"></a>
+## Using GIS Web Services <a name="gws"></a>
 
-In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/web_service.ipynb" target="_blank">gis web services notebook</a> for a detailed example.
+Explore the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/web_service.ipynb" target="_blank">gis web services notebook</a> notebook for detailed examples and Python code.
 
 ```python
 import osmnx as ox
@@ -131,9 +130,9 @@ gdf = gdf[gdf['geometry'].geom_type == 'Point']
 print(gdf)
 ```
 
-## H3 (UBER H3 Hexagon) <a name="h3"></a>
+## Creating H3 Hexagons <a name="h3"></a>
 
-In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/h3.ipynb" target="_blank">h3 notebook</a> for a detailed example.
+Refer to the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/h3.ipynb" target="_blank">h3 notebook</a> for detailed examples and Python code.
 
 ```python
 import h3
@@ -161,6 +160,6 @@ gdf_h3['hex_id'] = hexagons
 print(gdf_h3)
 ```
 
-## Other File Formats <a name="other"></a>
+## Handling Other File Formats <a name="other"></a>
 
-In the accompanying notebook, you can find the Python implementation of the process. Check out the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/others.md" target="_blank">others md</a> for a detailed example.
+Explore the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/others.md" target="_blank">others md</a> for detailed examples and Python code.
