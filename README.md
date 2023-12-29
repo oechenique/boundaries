@@ -9,7 +9,8 @@ Explore different techniques for handling geospatial data using Python and GeoPa
 4. [WFS (Web Feature Service)](#wfs)
 5. [GIS Web Service](#gws)
 6. [H3 (UBER H3 Hexagon)](#h3)
-7. [Other File Formats](#other)
+7. [3D Visualization](#3d-visualization)
+8. [Other File Formats](#other)
 
 ## Loading Shapefiles (.shp) <a name="shapefile"></a>
 
@@ -159,6 +160,14 @@ gdf_h3['hex_id'] = hexagons
 # Display the resulting GeoDataFrame
 print(gdf_h3)
 ```
+
+## 3D Visualization of Geospatial Data <a name="3d-visualization"></a>
+
+Explore the [3D visualization notebook](https://github.com/oechenique/boundaries/blob/main/Notebook/3d-visualization.ipynb) to learn how to visualize geospatial data with a focus on the Z-axis. This notebook demonstrates techniques for creating stunning 3D visualizations using Python.
+
+```python
+# Your Python code for 3D visualization goes here
+# ...
 
 ## Handling Other File Formats <a name="other"></a>
 
