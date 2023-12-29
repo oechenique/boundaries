@@ -105,7 +105,7 @@ gdf = gdf.set_crs(epsg=4326, allow_override=True)
 
 ## Using GIS Web Services <a name="gws"></a>
 
-Explore the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/web_service.ipynb" target="_blank">gis web services notebook</a> notebook for detailed examples and Python code.
+Explore the [gis web services notebook](https://github.com/oechenique/boundaries/blob/main/Notebook/web_service.ipynb) for examples on accessing GIS Web Services such as OpenStreetMap and Google Maps, and learn how to retrieve relevant geospatial information using Python.
 
 ```python
 import osmnx as ox
