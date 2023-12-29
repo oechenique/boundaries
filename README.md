@@ -163,7 +163,7 @@ print(gdf_h3)
 
 ## 3D Visualization of Geospatial Data <a name="3d-visualization"></a>
 
-Explore the [3D visualization notebook](https://github.com/oechenique/boundaries/blob/main/Notebook/3d-visualization.ipynb) to learn how to visualize geospatial data with a focus on the Z-axis. This notebook demonstrates techniques for creating stunning 3D visualizations using Python.
+Explore the [3D visualization notebook](https://github.com/oechenique/boundaries/blob/main/Notebook/3d_visualization.ipynb) to learn how to visualize geospatial data with a focus on the Z-axis. This notebook demonstrates techniques for creating stunning 3D visualizations using Python.
 
 ```python
 # Your Python code for 3D visualization goes here
