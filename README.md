@@ -168,6 +168,7 @@ Explore the [3D visualization notebook](https://github.com/oechenique/boundaries
 ```python
 # Your Python code for 3D visualization goes here
 # ...
+```
 
 ## Handling Other File Formats <a name="other"></a>
 
