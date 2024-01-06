@@ -48,7 +48,7 @@ print(gdf_geojson.head())
 
 ## Loading KML (.kml) <a name="kml"></a>
 
-Explore the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/kml.zip" target="_blank">kml notebook</a> for a detailed KML loading example.
+Explore the <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/kml.ipynb" target="_blank">kml notebook</a> for a detailed KML loading example.
 
 Note: If you can display the notebook, same code here: <a href="https://github.com/oechenique/boundaries/blob/main/Notebook/kml.md" target="_blank">kml md</a>.
 
